@@ -11,14 +11,25 @@
 </head>
 
 <body>
-    <div class="wrapper">
     <h1>2020年開運おみくじ</h1>
 
     <!-- おみくじの結果を表示させるため -->
-    <div class="result">?</div>
+    <div id="result" th:switch="${result}">
+        <p th:case =="大吉"><img src="/img/daikichi.jfif" alt=""></p>
+        <p th:case =="中吉"><img src="/img/chukichi.jfif" alt=""></p>
+        <p th:case =="小吉"><img src="/img/shokichi.jfif" alt=""></p>
+        <p th:case =="吉"><img src="/img/kichi.jfif" alt=""></p>
+        <p th:case =="凶"><img src="/img/kyou.jfif" alt=""></p>
+        <p th:case="*"><img src="/img/question.png" alt=""></p>
+     </div>
+     
 
-    <div class="btn">占う</div>
+    <div class="btn">
+        <form action="/fortune/" method="post">
+            <input id="omikuji_btn" type="submit" value="占う">
+        </form>
     </div>
+
 </body>
 
 </html>
